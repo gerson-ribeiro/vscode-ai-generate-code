@@ -6,12 +6,52 @@
   "engines": {
     "vscode": "^1.88.0"
   },
+  "extensionDependencies": [
+    "github.copilot-chat"
+  ],
   "categories": [
     "Other"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "enabledApiProposals": [
+    "aiRelatedInformation",
+    "chatParticipant"
+  ],
   "contributes": {
+    "chatParticipants": [
+      {
+        "id": "ai-code.generator",
+        "name": "ai-code",
+        "description": "Ai Code Generator, what is your trouble?",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "explain",
+            "description": "Explain the extension plugin does"
+          },
+          {
+            "name": "generate",
+            "description": "Generate code"
+          },
+          {
+            "name": "help",
+            "description": "Are you in trouble? What can I help you with?"
+          }
+        ]
+      }
+    ],
+    "configuration": [
+      {
+        "title": "ai-configurations",
+        "properties": {
+          "ai-generate-code.ai.credentials": {
+            "type": "string",
+            "description": "Api Key from OpenAI chatbot"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "ai-generate-code.helloWorld",
@@ -31,17 +71,23 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.88.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/react": "^18.2.79",
+    "@types/vscode": "^1.88.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4",
     "@vscode/test-cli": "^0.0.8",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "openai": "^4.38.1",
+    "react": "^18.2.0"
   }
 }
