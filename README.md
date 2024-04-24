@@ -1,71 +1,48 @@
-# ai-generate-code README
+# AI Generate Code Plugin
 
-This is the README for your extension "ai-generate-code". After writing up a brief description, we recommend including the following sections.
+The AI Generate Code plugin is a Visual Studio Code extension that utilizes the Copilot extension to provide a chat interface with OpenAI and developers. This plugin allows developers to generate code snippets and suggestions using AI technology.
 
-## Features
+## Installation
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+To install the AI Generate Code plugin, follow these steps:
 
-For example if there is an image subfolder under your extension project workspace:
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
+3. Search for "AI Generate Code" in the Extensions view search bar.
+4. Click on the Install button for the AI Generate Code plugin.
 
-\!\[feature X\]\(images/feature-x.png\)
+## Usage
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+To use the AI Generate Code plugin, follow these steps:
 
-## Requirements
+1. Open a file in Visual Studio Code.
+2. Use the Copilot extension to start a chat with OpenAI.
+3. Enter your query or code snippet in the chat interface.
+4. The AI Generate Code plugin will provide code suggestions and snippets based on the conversation with OpenAI.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Configuration
 
-## Extension Settings
+To configure the AI Generate Code plugin, you will need to set up the API key and GPT model. Follow the steps below to set up the API key and GPT model:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Setting up the API Key
 
-For example:
+1. Go to the OpenAI website and create an account.
+2. Generate an API key in your OpenAI account settings.
+3. Copy the API key.
+4. Open Visual Studio Code and go to the Settings view by clicking on the gear icon in the lower left corner of the window.
+5. Search for "ai-generate-code.apikey" in the search bar.
+6. Paste the API key in the "ai-generate-code.apikey" field and save the settings.
 
-This extension contributes the following settings:
+### Setting up the GPT Model
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Go to the OpenAI website and choose a GPT model to use.
+2. Copy the model ID.
+3. Open Visual Studio Code and go to the Settings view.
+4. Search for "ai-generate-code.model" in the search bar.
+5. Paste the model ID in the "ai-generate-code.model" field and save the settings.
 
-## Known Issues
+## Support
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+If you encounter any issues or have any feedback about the AI Generate Code plugin, please feel free to reach out to the developer at [Gerson Ribeiro](mailto:gerson.abimael.rp@gmail.com).
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Happy coding with AI Generate Code! 🚀
