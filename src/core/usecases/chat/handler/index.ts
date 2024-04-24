@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import strategy from './strategy';
-import normalizeResponse from "./normalizeResponse";
 
 export enum PluginAction {
     EXPLAIN_PLUGIN = 'explain-plugin',
@@ -12,10 +11,9 @@ const handler: vscode.ChatRequestHandler = async (
   request: vscode.ChatRequest,
   context: vscode.ChatContext,
   stream: vscode.ChatResponseStream,
-  token: vscode.CancellationToken,
-  extContext: vscode.ExtensionContext
+  token: vscode.CancellationToken
 ): Promise<any> => {
-    const strategyResponse = await strategy(request, extContext);
+    const strategyResponse = await strategy(request, context);
 
     stream.markdown(strategyResponse);
 };

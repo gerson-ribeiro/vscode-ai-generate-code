@@ -7,7 +7,7 @@ export enum PromptAction {
 }
 
 interface IPromptServiceProps {
-  context: vscode.ExtensionContext;
+  context: vscode.ChatContext;
   action: PromptAction;
 }
 

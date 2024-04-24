@@ -6,16 +6,20 @@ import promptService, {
   PromptAction,
 } from "../../../../../functions/services/prompt-service/prompt.service";
 import aiClientService from "../../../../../functions/services/ai-client-service/ai-client.service";
-import { CONFIG_API_KEY_NAME, CONFIG_API_MODEL_NAME } from "../../../../../constants";
-
+import {
+  CONFIG_API_KEY_NAME,
+  CONFIG_API_MODEL_NAME,
+} from "../../../../../constants";
+import useEnvVar from "../../../../../utils/useEnvVar";
 export default async function (
   request: vscode.ChatRequest,
-  extensionContext: vscode.ExtensionContext
+  extensionContext: vscode.ChatContext
 ) {
-  if (request.command !== PluginAction.GENERATE_CODE)
+  if (request.command !== PluginAction.GENERATE_CODE) {
     return explainPluginAction(request);
+  }
 
-  const apiKey = vscode.workspace.getConfiguration().get(CONFIG_API_KEY_NAME);
+  const { apiKey, model } = useEnvVar();
   if (!apiKey || apiKey === "") {
     vscode.window.showInformationMessage(
       "Please set your api key in the settings (ai-generate-code)!"
@@ -34,9 +38,6 @@ export default async function (
   };
 
   const messages = [sysPrompt];
-  const model: string =
-    vscode.workspace.getConfiguration().get(CONFIG_API_MODEL_NAME) ||
-    "gpt-3.5-turbo";
 
   const aiClient = await aiClientService({
     apiKey,

@@ -17,21 +17,31 @@ export default async ({ apiKey, settings }: IOpenAIProps) => {
   const completion = async (prompt: string) => {
     const { model, messages, stream } = settings;
 
-    messages[1].role = "user";
-    messages[1].content = prompt;
+    messages.push({
+      role: "user",
+      content: prompt,
+    });
+
     const chatCompletionParams: OpenAI.Chat.ChatCompletionCreateParams = {
       model,
       messages,
       stream: false,
     };
 
-    const gptResponse =
-      await openai.chat.completions.create(chatCompletionParams);
+    try {
+      const gptResponse = await openai.chat.completions.create(
+        chatCompletionParams
+      );
 
-    return gptResponse.choices.map((choice) => choice.message.content).join("\n");
+      return gptResponse.choices
+        .map((choice: any) => choice.message.content)
+        .join("\n");
+    } catch (e: any) {
+      return e.message;
+    }
   };
 
   return {
-    completion
+    completion,
   };
 };

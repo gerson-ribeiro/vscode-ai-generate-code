@@ -1,6 +1,7 @@
 {
   "name": "ai-generate-code",
   "displayName": "ai-generate-code",
+  "publisher": "gerson.ribeiro",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -14,8 +15,10 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "enable-proposed-api": [
+    "ai-generate-code"
+  ],
   "enabledApiProposals": [
-    "aiRelatedInformation",
     "chatParticipant"
   ],
   "contributes": {
@@ -43,9 +46,18 @@
     ],
     "configuration": [
       {
-        "title": "ai-configurations",
+        "title": "ai-configurations-key",
         "properties": {
-          "ai-generate-code.ai.credentials": {
+          "ai-generate-code.apikey": {
+            "type": "string",
+            "description": "Api Key from OpenAI chatbot"
+          }
+        }
+      },
+      {
+        "title": "ai-configurations-",
+        "properties": {
+          "ai-generate-code.apikey": {
             "type": "string",
             "description": "Api Key from OpenAI chatbot"
           }
@@ -74,7 +86,6 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/react": "^18.2.79",
-    "@types/vscode": "^1.88.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "@vscode/test-cli": "^0.0.8",
@@ -86,8 +97,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "agentkeepalive": "^4.5.0",
     "axios": "^1.6.8",
     "openai": "^4.38.1",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "whatwg-url": "^14.0.0"
   }
 }

@@ -8,8 +8,9 @@ export default function (context: vscode.ExtensionContext) {
 
   aiCode.iconPath = vscode.Uri.joinPath(
     context.extensionUri,
+    "src",
     "assets",
     "icons",
-    "plugin-chat-profile.jpg"
+    "plugin-chat-black-cat.jpg"
   );
 }
