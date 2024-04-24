@@ -4,4 +4,6 @@ WARNING: DO NOT REPLY COMMENTS, JUST CODE.
 
 Example of expected output format:
 File: [filename]
-[code without block]`;
+[code without block]
+
+END`;

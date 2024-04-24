@@ -1,9 +1,14 @@
 {
   "name": "ai-generate-code",
   "displayName": "ai-generate-code",
-  "publisher": "gerson.ribeiro",
+  "publisher": "gerson-ribeiro",
   "description": "",
   "version": "0.0.1",
+  "icon": "extension-logo.jpg",
+  "license":"MIT",
+  "repository": {
+    "url": "https://github.com/gerson-ribeiro/vscode-ai-generate-code"
+  },
   "engines": {
     "vscode": "^1.88.0"
   },
