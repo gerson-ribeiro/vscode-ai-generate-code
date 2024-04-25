@@ -1,48 +1,66 @@
-# AI Generate Code Plugin
+# AI Generate Code - VSCode Extension
 
-The AI Generate Code plugin is a Visual Studio Code extension that utilizes the Copilot extension to provide a chat interface with OpenAI and developers. This plugin allows developers to generate code snippets and suggestions using AI technology.
+AI Generate Code is a Visual Studio Code extension that integrates OpenAI's powerful language models directly into your development environment. This tool allows developers to interact with AI, ask coding questions, and receive code suggestions right within VSCode. Enhance your coding experience by leveraging the power of AI to write code, debug, and learn new technologies.
+
+## Features
+
+- **AI-Powered Code Assistance:** -FUTURE- Get code suggestions and answers to programming queries directly in your editor.
+- **Customizable AI Model:** Choose which OpenAI model you want to use based on your needs and preferences.
+- **Seamless Integration:** Works within VSCode without the need for switching between applications or windows.
+
+## Prerequisites
+
+Before you install and use the AI Generate Code extension, make sure you have the following:
+
+- Visual Studio Code (latest version recommended)
+- An active internet connection
+- An OpenAI API key (see below for instructions on how to obtain one)
 
 ## Installation
 
-To install the AI Generate Code plugin, follow these steps:
-
 1. Open Visual Studio Code.
-2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
-3. Search for "AI Generate Code" in the Extensions view search bar.
-4. Click on the Install button for the AI Generate Code plugin.
+2. Navigate to the Extensions view by clicking on the square icon on the sidebar or pressing `Ctrl+Shift+X`.
+3. Search for `AI Generate Code`.
+4. Click on `Install` to install the extension.
 
-## Usage
+## Obtaining an OpenAI API Key
 
-To use the AI Generate Code plugin, follow these steps:
+To interact with OpenAI's models, you need an API key. Here's how you can obtain one:
 
-1. Open a file in Visual Studio Code.
-2. Use the Copilot extension to start a chat with OpenAI.
-3. Enter your query or code snippet in the chat interface.
-4. The AI Generate Code plugin will provide code suggestions and snippets based on the conversation with OpenAI.
+1. Visit [OpenAI's API platform](https://platform.openai.com/signup).
+2. Sign up or log in to create an account.
+3. Once logged in, navigate to the API section and click on `Create new API key`.
+4. Follow the prompts to generate a new API key. Make sure to copy and securely store your API key as it will not be shown again.
 
 ## Configuration
 
-To configure the AI Generate Code plugin, you will need to set up the API key and GPT model. Follow the steps below to set up the API key and GPT model:
+After installation and obtaining your API key, configure the extension by setting up the API key and choosing your preferred GPT model.
 
-### Setting up the API Key
+### Setting Up the API Key
 
-1. Go to the OpenAI website and create an account.
-2. Generate an API key in your OpenAI account settings.
-3. Copy the API key.
-4. Open Visual Studio Code and go to the Settings view by clicking on the gear icon in the lower left corner of the window.
-5. Search for "ai-generate-code.apikey" in the search bar.
-6. Paste the API key in the "ai-generate-code.apikey" field and save the settings.
+1. Open VSCode and go to `File > Preferences > Settings` (or press `Ctrl+,`).
+2. Search for `ai-generate-code`.
+3. Find the `ai-generate-code.apikey` setting.
+4. Enter your OpenAI API key in the text box and save the changes.
 
-### Setting up the GPT Model
+### Setting Up the GPT Model
 
-1. Go to the OpenAI website and choose a GPT model to use.
-2. Copy the model ID.
-3. Open Visual Studio Code and go to the Settings view.
-4. Search for "ai-generate-code.model" in the search bar.
-5. Paste the model ID in the "ai-generate-code.model" field and save the settings.
+1. In the same settings page (`File > Preferences > Settings`), find or add the `ai-generate-code.model` setting.
+2. (Optional) Enter the model ID you wish to use (e.g., `text-davinci-003`, `code-davinci-002`). Refer to OpenAI's documentation for available models. If you don't specify a model, the default model (`gpt-3.5-turbo`) will be used.
+3. Save the changes.
+
+## Usage
+
+Once the extension is installed and configured:
+
+1. Open a code file or a new file in VSCode.
+2. Activate the extension by using the command palette (`Ctrl+Shift+P`) and typing `AI Generate Code: Start Session`.
+3. A chat interface should appear where you can start typing your queries and receive responses from the configured AI model.
 
 ## Support
 
-If you encounter any issues or have any feedback about the AI Generate Code plugin, please feel free to reach out to the developer at [Gerson Ribeiro](mailto:gerson.abimael.rp@gmail.com).
+For support, feature requests, or bug reporting, please visit the [GitHub repository](https://github.com/your-github-repo/ai-generate-code) and open an issue.
 
-Happy coding with AI Generate Code! 🚀
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
