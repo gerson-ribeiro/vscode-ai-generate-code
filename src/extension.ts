@@ -1,14 +1,15 @@
 import * as vscode from "vscode";
 import chat from "./core/usecases/chat";
-import { CONFIG_API_KEY_NAME, CONFIG_APP_NAME } from "./core/constants";
+import useEnvVar from "./core/utils/useEnvVar";
 
-export function activate(context: vscode.ExtensionContext) {
-	const apikey = vscode.workspace.getConfiguration(CONFIG_APP_NAME).get(CONFIG_API_KEY_NAME);
-	if(!apikey || apikey === ""){
-		vscode.window.showInformationMessage("Please set your api key in the settings!");
-	}
-
-	chat(context);
+export async function activate(context: vscode.ExtensionContext) {
+  const { apiKey } = useEnvVar();
+  if (!apiKey || apiKey === "") {
+    vscode.window.showInformationMessage(
+      "Please set your api key in the settings!"
+    );
+  }
+  await chat(context);
 }
 
 export function deactivate() {}

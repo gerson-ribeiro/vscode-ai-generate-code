@@ -11,11 +11,13 @@ import {
   CONFIG_API_MODEL_NAME,
 } from "../../../../../constants";
 import useEnvVar from "../../../../../utils/useEnvVar";
+import { Strategy } from "..";
+
 export default async function (
-  request: vscode.ChatRequest,
-  extensionContext: vscode.ChatContext
+  request: Strategy,
+  extensionContext: vscode.ExtensionContext
 ) {
-  if (request.command !== PluginAction.GENERATE_CODE) {
+  if (request.action !== PluginAction.GENERATE_CODE) {
     return explainPluginAction(request);
   }
 
@@ -27,7 +29,7 @@ export default async function (
     return "Please set your api key in the settings! (ai-generate-code)";
   }
 
-  const prompt = request.prompt;
+  const prompt = request.message;
 
   const sysPrompt: ChatCompletionSystemMessageParam = {
     content: await promptService({

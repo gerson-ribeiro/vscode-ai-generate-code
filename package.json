@@ -5,50 +5,38 @@
   "description": "",
   "version": "0.0.1",
   "icon": "extension-logo.jpg",
-  "license":"MIT",
+  "license": "MIT",
   "repository": {
     "url": "https://github.com/gerson-ribeiro/vscode-ai-generate-code"
   },
   "engines": {
     "vscode": "^1.88.0"
   },
-  "extensionDependencies": [
-    "github.copilot-chat"
-  ],
+  "extensionDependencies": [],
   "categories": [
     "Other"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
-  "enable-proposed-api": [
-    "ai-generate-code"
-  ],
-  "enabledApiProposals": [
-    "chatParticipant"
-  ],
   "contributes": {
-    "chatParticipants": [
-      {
-        "id": "ai-code.generator",
-        "name": "ai-code",
-        "description": "Ai Code Generator, what is your trouble?",
-        "isSticky": true,
-        "commands": [
-          {
-            "name": "explain",
-            "description": "Explain the extension plugin does"
-          },
-          {
-            "name": "generate",
-            "description": "Generate code"
-          },
-          {
-            "name": "help",
-            "description": "Are you in trouble? What can I help you with?"
-          }
-        ]
-      }
-    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-code",
+          "title": "AI Generate Code",
+          "icon": "src/assets/icons/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ai-code": [
+        {
+          "id": "ai-code.chat",
+          "name": "AI Generate Code - Chat",
+          "type": "webview"
+        }
+      ]
+    },
     "configuration": [
       {
         "title": "ai-configurations-key",
@@ -68,12 +56,6 @@
           }
         }
       }
-    ],
-    "commands": [
-      {
-        "command": "ai-generate-code.helloWorld",
-        "title": "Hello World"
-      }
     ]
   },
   "scripts": {
@@ -91,6 +73,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/react": "^18.2.79",
+    "@types/vscode": "^1.62.0",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "@vscode/test-cli": "^0.0.8",
@@ -104,6 +87,9 @@
   "dependencies": {
     "agentkeepalive": "^4.5.0",
     "axios": "^1.6.8",
+    "highlight": "^0.2.4",
+    "highlight.js": "^11.9.0",
+    "markdown-it": "^14.1.0",
     "openai": "^4.38.1",
     "react": "^18.2.0",
     "whatwg-url": "^14.0.0"

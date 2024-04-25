@@ -7,16 +7,18 @@ import promptService, {
 } from "../../../../../functions/services/prompt-service/prompt.service";
 import { ChatCompletionSystemMessageParam } from "openai/resources/index.mjs";
 import useEnvVar from "../../../../../utils/useEnvVar";
+import { Strategy } from "..";
 
 export default async function (
-  request: vscode.ChatRequest,
-  extensionContext: vscode.ChatContext
+  request: Strategy,
+  extensionContext: vscode.ExtensionContext
 ) {
-  if (request.command !== PluginAction.HELP) {
+  if (request.action !== PluginAction.HELP) {
     return generateAction(request, extensionContext);
   }
 
   const { apiKey, model } = useEnvVar();
+  
   if (!apiKey || apiKey === "") {
     vscode.window.showInformationMessage(
       "Please set your api key in the settings (ai-generate-code)!"
@@ -24,7 +26,7 @@ export default async function (
     return "Please set your api key in the settings! (ai-generate-code)";
   }
 
-  const prompt = request.prompt;
+  const prompt = request.message;
 
   const sysPrompt: ChatCompletionSystemMessageParam = {
     content: await promptService({

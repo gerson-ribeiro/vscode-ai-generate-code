@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src {{cspSource}}; script-src 'unsafe-inline'; img-src {{cspSource}} https:;">
+    <link href="{{styles}}" rel="stylesheet" />
+    <title>Chat</title>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="messages-container">
+            <div id="chat-messages" class="chat__messages__message">
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="chat-input" />
+            <button id="chat-send-button" class="chat__input__button">Send</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const vscode = acquireVsCodeApi();
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const chatInput = document.querySelector("#chat-input");
+        const chatSendButton = document.querySelector("#chat-send-button");
+        const chatMessages = document.querySelector("#chat-messages");
+
+        chatInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.keyCode === 13) {
+                event.preventDefault();
+                send();
+            }
+        });
+        chatSendButton.addEventListener("click", () => {
+            if (chatInput.value === "") return;
+            send();
+        });
+
+        function registerMessage(message, type) {
+            const messageElement = createMessageElement(message, type);
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            if (type === "sent") {
+                vscode.postMessage({ command: "sendMessage", text: text }, "*");
+            }
+        }
+
+        function createMessageElement(text, messageType) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", messageType);
+            messageElement.innerHTML = `<div class="markdown">${text}</div>`;
+            return messageElement;
+        }
+
+        function send() {
+            const message = chatInput.value;
+            if (!message) return;
+
+            vscode.postMessage({
+                command: "send",
+                message,
+            });
+
+            chatInput.value = "";
+
+            registerMessage(message, "sent");
+        }
+
+        window.addEventListener("message", (event) => {
+            console.log("message", event);
+            const message = event.data;
+            switch (message.command) {
+                case "receive":
+                    registerMessage(message.message, "received");
+                    break;
+            }
+        });
+    });
+
+</script>

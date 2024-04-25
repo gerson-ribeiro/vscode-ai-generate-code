@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import getPromptToRun from "./actionStrategy";
+import * as fs from "fs";
 
 export enum PromptAction {
   HELP = "help",
@@ -7,12 +7,16 @@ export enum PromptAction {
 }
 
 interface IPromptServiceProps {
-  context: vscode.ChatContext;
+  context: vscode.ExtensionContext;
   action: PromptAction;
 }
 
 export default function ({ context, action }: IPromptServiceProps) {
-  const promptToRun = getPromptToRun(action, context);
-
-  return promptToRun;
+  if(action === PromptAction.HELP) {
+    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "src", "core", "functions", "utils", "prompt", "help.txt").fsPath).toString();
+  }
+  if(action === PromptAction.GENERATE) {
+    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "src", "core", "functions", "utils", "prompt", "generate.txt").fsPath).toString();
+  }
+  return "";
 }
