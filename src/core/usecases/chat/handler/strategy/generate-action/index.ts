@@ -1,15 +1,10 @@
 import * as vscode from "vscode";
 import { PluginAction } from "../..";
-import explainPluginAction from "../explain-plugin-action";
 import { ChatCompletionSystemMessageParam } from "openai/resources/index.mjs";
 import promptService, {
   PromptAction,
 } from "../../../../../functions/services/prompt-service/prompt.service";
 import aiClientService from "../../../../../functions/services/ai-client-service/ai-client.service";
-import {
-  CONFIG_API_KEY_NAME,
-  CONFIG_API_MODEL_NAME,
-} from "../../../../../constants";
 import useEnvVar from "../../../../../utils/useEnvVar";
 import { Strategy } from "..";
 
@@ -18,7 +13,7 @@ export default async function (
   extensionContext: vscode.ExtensionContext
 ) {
   if (request.action !== PluginAction.GENERATE_CODE) {
-    return explainPluginAction(request);
+    return "Invalid action";
   }
 
   const { apiKey, model } = useEnvVar();
