@@ -1,6 +1,6 @@
 {
   "name": "ai-generate-code",
-  "displayName": "ai-generate-code",
+  "displayName": "AI Generate Code",
   "publisher": "gerson-ribeiro",
   "description": "",
   "version": "0.0.1",
@@ -48,16 +48,21 @@
         }
       },
       {
-        "title": "ai-configurations-",
+        "title": "ai-configurations-model",
         "properties": {
-          "ai-generate-code.apikey": {
+          "ai-generate-code.model": {
             "type": "string",
-            "description": "Api Key from OpenAI chatbot"
+            "description": "Model from OpenAI chatbot"
           }
         }
       }
     ]
   },
+  "files": [
+    "src/assets/templates/chat/index.html",
+    "src/assets/templates/chat/index.css",
+    "src/assets/templates/chat/index.js"
+  ],
   "scripts": {
     "vscode:prepublish": "yarn run package",
     "compile": "webpack",
