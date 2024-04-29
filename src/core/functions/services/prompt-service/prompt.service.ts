@@ -13,10 +13,10 @@ interface IPromptServiceProps {
 
 export default function ({ context, action }: IPromptServiceProps) {
   if(action === PromptAction.HELP) {
-    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "src", "core", "functions", "utils", "prompt", "help.txt").fsPath).toString();
+    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "media", "prompts", "help.txt").fsPath).toString();
   }
   if(action === PromptAction.GENERATE) {
-    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "src", "core", "functions", "utils", "prompt", "generate.txt").fsPath).toString();
+    return fs.readFileSync(vscode.Uri.joinPath(context.extensionUri, "media", "prompts", "generate.txt").fsPath).toString();
   }
   return "";
 }
