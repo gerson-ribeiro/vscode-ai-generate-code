@@ -28,7 +28,7 @@ jobs:
 
       - name: 🆙 Update version in package.json
         run: |
-          yarn version --new-version ${{ github.event.inputs.version }} --no-git-tag-version
+          yarn version --new-version ${{ github.event.inputs.version }} --no-git-tag-version --no-commit-hooks
 
       - name: 🎯 Commit and push changes
         run: |
