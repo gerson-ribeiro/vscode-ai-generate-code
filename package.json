@@ -12,6 +12,9 @@
   "engines": {
     "vscode": "^1.88.0"
   },
+  "capabilities": {
+    "virtualWorkspaces": true
+  },
   "extensionDependencies": [],
   "categories": [
     "Other"

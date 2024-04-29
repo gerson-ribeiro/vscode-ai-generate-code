@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
-import chat from "../../../../assets/templates/chat";
+import webviewTemplates from "../webviewTemplates";
 
 export default async (
   webviewView: vscode.WebviewView,
   _extensionUri: vscode.Uri
 ): Promise<string> => {
-  const { htmlPath, cssPath, jsPath } = chat(_extensionUri);
+  const { htmlPath, cssPath, jsPath } = webviewTemplates(_extensionUri);
 
   if (fs.existsSync(htmlPath.fsPath)) {
     const htmlTxt = fs.readFileSync(htmlPath.fsPath, "utf-8");
