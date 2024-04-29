@@ -26,5 +26,7 @@ jobs:
         run: yarn package
 
       - name: 🚀 Publish to VSCode Marketplace
-        if: github.ref == 'refs/heads/main'
-        run: vsce publish -p ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        uses: HaaLeo/publish-vscode-extension@v1
+        with:
+          pat: ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+          registryUrl: https://marketplace.visualstudio.com
