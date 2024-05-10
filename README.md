@@ -53,13 +53,16 @@ After installation and obtaining your API key, configure the extension by settin
 
 Once the extension is installed and configured:
 
-1. Open a code file or a new file in VSCode.
-2. Activate the extension by using the command palette (`Ctrl+Shift+P`) and typing `AI Generate Code: Start Session`.
-3. A chat interface should appear where you can start typing your queries and receive responses from the configured AI model.
+1. Select AI-Generate-Code from the VSCode sidebar.
+2. Click on the input box to start interacting with the AI model, use the following commands for interact better with AI:
+
+- `/help` - To ask AI model to help with a bug or with any throuble you have.
+- `/generate` - To ask AI model to generate code for you. In terms, you will be passing a feature to AI model and it will generate the code according to the feature you asked.
+- To use none prompts, just type what you want and the AI model will answer you.
 
 ## Support
 
-For support, feature requests, or bug reporting, please visit the [GitHub repository](https://github.com/your-github-repo/ai-generate-code) and open an issue.
+For support, feature requests, or bug reporting, please visit the [GitHub repository](https://github.com/your-github-repo/ai-generate-code) and open an issue or contact me on my [Linkedin Page](https://www.linkedin.com/in/gersonrp/).
 
 ## License
 
