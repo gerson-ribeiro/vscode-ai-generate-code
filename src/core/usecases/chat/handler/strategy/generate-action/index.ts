@@ -10,6 +10,7 @@ import { Strategy } from "..";
 
 export default async function (
   request: Strategy,
+  history: any[],
   extensionContext: vscode.ExtensionContext
 ) {
   if (request.action !== PluginAction.GENERATE_CODE) {
@@ -25,16 +26,21 @@ export default async function (
   }
 
   const prompt = request.message;
+  let sysPrompt: ChatCompletionSystemMessageParam | undefined = undefined;
 
-  const sysPrompt: ChatCompletionSystemMessageParam = {
-    content: await promptService({
-      context: extensionContext,
-      action: PromptAction.GENERATE,
-    }),
-    role: "system",
-  };
+  if (history.length === 0)
+    sysPrompt = {
+      content: await promptService({
+        context: extensionContext,
+        action: PromptAction.GENERATE,
+      }),
+      role: "system",
+    };
 
-  const messages = [sysPrompt];
+  const messages =
+    history.length === 0 && sysPrompt !== undefined
+      ? [sysPrompt]
+      : history.map(({ role, content }) => ({ role, content }));
 
   const aiClient = await aiClientService({
     apiKey,

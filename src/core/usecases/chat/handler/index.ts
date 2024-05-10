@@ -13,17 +13,30 @@ const handler = async (
   _context: vscode.ExtensionContext
 ): Promise<vscode.WebviewViewProvider> => {
   const { render } = await markdown();
+  const history: any[] = [];
   const sendMessage = async (webviewView: vscode.WebviewView, message: any) => {
     const action = PluginAction.HELP;
 
     const response = await strategy(
       { action, message: message.message },
+      history,
       _context
     );
+    history.push({
+      command: "send",
+      role: "user",
+      content: message.message,
+    });
 
     const htmlRespose = render(response)
       .replace(/\n/g, "<br>")
       .replace(/<br>$/, "");
+
+    history.push({
+      command: "receive",
+      role: "system",
+      content: htmlRespose || response,
+    });
 
     webviewView.webview.postMessage({
       command: "receive",

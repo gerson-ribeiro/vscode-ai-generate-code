@@ -27,7 +27,7 @@
         {
           "id": "ai-code",
           "title": "AI Generate Code",
-          "icon": "src/assets/icons/icon.svg"
+          "icon": "./media/icon.svg"
         }
       ]
     },

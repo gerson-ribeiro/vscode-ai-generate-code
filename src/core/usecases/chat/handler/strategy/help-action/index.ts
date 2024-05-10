@@ -11,14 +11,15 @@ import { Strategy } from "..";
 
 export default async function (
   request: Strategy,
+  history: any[],
   extensionContext: vscode.ExtensionContext
 ) {
   if (request.action !== PluginAction.HELP) {
-    return generateAction(request, extensionContext);
+    return generateAction(request, history, extensionContext);
   }
 
   const { apiKey, model } = useEnvVar();
-  
+
   if (!apiKey || apiKey === "") {
     vscode.window.showInformationMessage(
       "Please set your api key in the settings (ai-generate-code)!"
@@ -27,16 +28,21 @@ export default async function (
   }
 
   const prompt = request.message;
+  let sysPrompt: ChatCompletionSystemMessageParam | undefined = undefined;
 
-  const sysPrompt: ChatCompletionSystemMessageParam = {
-    content: await promptService({
-      context: extensionContext,
-      action: PromptAction.HELP,
-    }),
-    role: "system",
-  };
+  if (history.length === 0)
+    sysPrompt = {
+      content: await promptService({
+        context: extensionContext,
+        action: PromptAction.HELP,
+      }),
+      role: "system",
+    };
 
-  const messages = [sysPrompt];
+  const messages =
+    history.length === 0 && sysPrompt !== undefined
+      ? [sysPrompt]
+      : history.map(({ role, content }) => ({ role, content }));
 
   const aiClient = await aiClientService({
     apiKey,
