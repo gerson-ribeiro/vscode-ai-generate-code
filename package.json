@@ -22,6 +22,27 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "menus": {
+      "activityBar": [
+        {
+          "id": "ai-code",
+          "title": "AI Generate Code",
+          "group": "ai-code",
+          "submenu": [
+            {
+              "id": "constant-submenu",
+              "title": "Generate File from Constant",
+              "submenu": [
+                {
+                  "title": "Generate File with Constant Value",
+                  "command": "extension.generateFile"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "viewsContainers": {
       "activitybar": [
         {

@@ -16,8 +16,10 @@
             </div>
         </div>
         <div class="input-container">
-            <input type="text" id="chat-input" />
-            <button id="chat-send-button" class="chat__input__button">Send</button>
+            <textarea id="chat-input"></textarea>
+            <button id="chat-send-button">
+                <img src="{{sendIcon}}" alt="Send" />
+            </button>
         </div>
     </div>
 </body>
@@ -32,6 +34,7 @@
         const chatMessages = document.querySelector("#chat-messages");
 
         chatInput.addEventListener("keydown", (event) => {
+            if (event.key === 'Enter' && event.shiftKey) return;
             if (event.key === "Enter" || event.keyCode === 13) {
                 event.preventDefault();
                 send();

@@ -11,10 +11,10 @@ export enum PluginAction {
 }
 
 const handler = async (
-  _context: vscode.ExtensionContext
+  _context: vscode.ExtensionContext,
+  history: any[]
 ): Promise<vscode.WebviewViewProvider> => {
   const { render } = await markdown();
-  const history: any[] = [];
   const sendMessage = async (webviewView: vscode.WebviewView, message: any) => {
     const action = message.message.startsWith("/help")
       ? PluginAction.HELP

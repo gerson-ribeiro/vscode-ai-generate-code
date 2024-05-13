@@ -1,102 +1,114 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
 }
 
 .messages-container {
-    flex-grow: 1;
-    overflow-y: auto;
-    overflow-x: auto;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
-    background-color: #f1f0f0;
-    border-radius: 14px;
-    display: inline-block;
-    margin-bottom: 8px;
-    padding: 8px 10px;
-    max-width: 90%;
-    word-wrap: break-word;
-    font-size: 12px;
-    text-align: justify;
+  background-color: #f1f0f0;
+  border-radius: 14px;
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  max-width: 90%;
+  word-wrap: break-word;
+  font-size: 12px;
+  text-align: justify;
 }
 
 .message.sent {
-    background-color: #00a084;
-    color: black;
-    align-self: flex-end;
-    margin-right: 6px;
-    display: flex;
-    word-wrap: break-word;
-    border-bottom-right-radius: 0px;
+  background-color: #00a084;
+  color: black;
+  align-self: flex-end;
+  display: flex;
+  word-wrap: break-word;
+  border-bottom-right-radius: 0px;
+  margin-left: 6px;
 }
 
 .message.received {
-    background-color: #523150;
-    color: white;
-    margin-left: 6px;
-    align-self: flex-start;
-    display: flex;
-    word-wrap: break-word;
-    border-bottom-left-radius: 0px;
+  background-color: #523150;
+  margin-right: 4px;
+  color: white;
+  align-self: flex-start;
+  display: flex;
+  word-wrap: break-word;
+  border-bottom-left-radius: 0px;
+  text-align: justify;
 }
 
 .input-container {
-    display: flex;
-    padding: 16px;
+  display: flex;
+  padding: 16px;
 }
 
-input[type="text"] {
-    width: 100%;
-    border-radius: 4px;
-    flex-grow: 1;
-    outline: none;
-    padding: 7px 12px;
-    margin: 8px 2px;
-    font-size: 12px;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    color: white;
+input[type="text"],
+textarea {
+  width: 100%;
+  flex-grow: 1;
+  outline: none;
+  padding: 7px 12px;
+  margin: 8px 2px;
+  font-size: 12px;
+  background-color: white;
+  border: 1px solid #ccc;
+  color: black;
+  resize: vertical;
+  max-height: 100px;
+  min-height: 30px;
 }
 
 button {
-    background-color: #00a084;
-    border: none;
-    color: rgb(251, 251, 251);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 8px 2px;
-    cursor: pointer;
-    padding: 10px 12px;
-    border-radius: 4px;
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  color: rgb(251, 251, 251);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 8px 4px;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+
+button img {
+  width: 25px;
+  height: 25px;
 }
 
 button:hover {
-    background-color: #006453;
+  opacity: 0.5;
 }
 
 .markdown {
-    line-height: 1.2;
-    font-size: 12px;
-    white-space: normal;
-    margin-bottom: 0;
+  line-height: 1.2;
+  font-size: 12px;
+  white-space: normal;
+  margin-bottom: 0;
 }
 
 .markdown h1,
@@ -105,57 +117,58 @@ button:hover {
 .markdown h4,
 .markdown h5,
 .markdown h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-    line-height: 1.4;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  line-height: 1.4;
 }
 .markdown p {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .markdown ul {
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .markdown ol {
-    padding-left: 1.8em;
-    margin-bottom: 1em;
+  padding-left: 1.8em;
+  margin-bottom: 1em;
 }
 
 .markdown a {
-    color: #1a0dab;
-    text-decoration: none;
+  color: #1a0dab;
+  text-decoration: none;
 }
 
 .markdown a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .markdown pre {
-    background-color: #1e2c4a;
-    border-radius: 3px;
-    padding: 1em;
-    margin-bottom: 1em;
-    overflow-x: auto;
-    font-size: 0.9em;
-    white-space: pre-wrap;
+  background-color: #1e2c4a;
+  border-radius: 3px;
+  padding: 1em;
+  margin-bottom: 1em;
+  overflow-x: auto;
+  font-size: 0.9em;
+  white-space: pre-wrap;
 }
 
 .markdown code {
-    background-color: rgba(27,31,35,0.05);
-    border-radius: 3px;
-    padding: 0.2em 0.4em;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  color: green;
 }
 
 .markdown pre > code {
-    background-color: transparent;
-    padding: 0;
+  background-color: transparent;
+  padding: 0;
 }
 
 .markdown blockquote {
-    margin: 0;
-    padding-left: 1em;
-    border-left: 2px solid #ccc;
+  margin: 0;
+  padding-left: 1em;
+  border-left: 2px solid #ccc;
 }
