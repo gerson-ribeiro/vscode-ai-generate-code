@@ -65,7 +65,7 @@
       {
         "title": "ai-configurations-key",
         "properties": {
-          "ai-generate-code.apikey": {
+          "ai-generate-code.apiKey": {
             "type": "string",
             "description": "Api Key from OpenAI chatbot"
           }

@@ -40,7 +40,7 @@ After installation and obtaining your API key, configure the extension by settin
 
 1. Open VSCode and go to `File > Preferences > Settings` (or press `Ctrl+,`).
 2. Search for `ai-generate-code`.
-3. Find the `ai-generate-code.apikey` setting.
+3. Find the `ai-generate-code.apiKey` setting.
 4. Enter your OpenAI API key in the text box and save the changes.
 
 ### Setting Up the GPT Model
