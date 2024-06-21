@@ -37,8 +37,8 @@ body {
 }
 
 .message.sent {
-  background-color: #00a084;
-  color: black;
+  background-color: #a00000;
+  color: white;
   align-self: flex-end;
   display: flex;
   word-wrap: break-word;
@@ -47,14 +47,22 @@ body {
 }
 
 .message.received {
-  background-color: #523150;
+  background-color: #a1a1a1;
   margin-right: 4px;
-  color: white;
+  color: black;
   align-self: flex-start;
   display: flex;
   word-wrap: break-word;
   border-bottom-left-radius: 0px;
   text-align: justify;
+}
+
+.message.received div.markdown a{
+  color:#a00000;
+  font-weight: bold;
+}
+.message.received div.markdown{
+  max-width: 95%;
 }
 
 .input-container {

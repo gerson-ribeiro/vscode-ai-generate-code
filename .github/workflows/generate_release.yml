@@ -9,10 +9,8 @@ on:
       previous_version:
         description: "Previous version number"
         required: true
-      prerelease:
-        description: "Is this a prerelease?"
-        required: true
-        default: "false"
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -23,8 +21,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref_name }}
 
       - name: 🆙 Update version in package.json
         run: |
@@ -40,17 +36,18 @@ jobs:
           git push origin HEAD
 
       - name: 📝 Generate tag and push
+        if: github.event_name == 'workflow_dispatch' # Apenas para despachos manuais
         run: |
           TAG=${{ github.event.inputs.version }}
           git tag $TAG
           git push origin $TAG --force-with-lease
 
       - name: 📝 Create release
+        if: github.event_name == 'workflow_dispatch' # Apenas para despachos manuais
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.event.inputs.version }}
           PREVIOUS_TAG: ${{ github.event.inputs.previous_version }}
-          PRE_RELEASE: ${{ github.event.inputs.prerelease && '--prerelease' || ''}}
         run: |
           gh release create "$TAG" \
               --title="$TAG" \
@@ -58,6 +55,7 @@ jobs:
               --notes-start-tag "$PREVIOUS_TAG" "$PRE_RELEASE"
 
       - name: 🚀 Publish release
+        if: github.event_name == 'workflow_dispatch' # Apenas para despachos manuais
         uses: peter-evans/repository-dispatch@v2
         env:
           TAG: ${{ github.event.inputs.version }}
